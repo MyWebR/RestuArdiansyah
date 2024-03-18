@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+     font-family:'inter', sans-serif;
+}
+
+/* nmavbar fix */
+.navbar-fixed {
+     @apply fixed z-[9999] bg-white  bg-opacity-10 dark:bg-dark dark:bg-opacity-10;
+     backdrop-filter: blur(5px);
+     box-shadow: inset 0px -0.2px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+/* navigasi */
+.hamburger-line {
+     @apply w-[30px] h-[2px] my-2 block bg-dark dark:bg-white;
+}
+
+.hamburger-active > span:nth-child(1) {
+     @apply rotate-45;
+}
+
+.hamburger-active > span:nth-child(2) {
+     @apply scale-0;
+}
+
+.hamburger-active > span:nth-child(3) {
+     @apply -rotate-45;
+}
+
+/*  */
+#dark-toggle:checked ~ label div.toggle-circle {
+     @apply translate-x-3 ;
+}
