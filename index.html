@@ -1,4 +1,4 @@
-d<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -24,9 +24,12 @@ d<!DOCTYPE html>
      <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
           <div class="container ">
                <div class="flex items-center justify-between relative">
-                    <div class="px-4">
-                         <a href="#home" class="font-bold text-lg text-primary block py-6">Restu Ardiansyah</a>
-                    </div>
+                <div class="px-4">
+                  <a href="#home" class="items-center font-bold text-lg text-primary block py-6">
+                    <!-- Tambahkan gambar sebagai ikon -->
+                    <img src="dist/img/logo restu.jpeg" alt="Logo Learn | Code Restu" class="" style="height: 40px; width: auto; border-radius: 5px;"> <!-- Sesuaikan ukuran gambar dengan kelas w-* dan h-* -->
+                  </a>
+                </div>
                     <div class="flex items-center px-4">
                          <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden ">
                               <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
@@ -105,25 +108,26 @@ d<!DOCTYPE html>
               >Hubungi Saya</a
             >
             
-            <a href="pdf/UNTUK SAAT INI CV BELUM DIBUAT.pdf" download="UNTUK SAAT INI CV BELUM DIBUAT.pdf" class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out -bottom-20">Download CV</a>
+            <!-- (berikan kode berikut untuk mendownload cv)download="UNTUK SAAT INI CV BELUM DIBUAT.pdf  -->
+
+            <a href="dist/page not found/page_not_found.html" class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out -bottom-20">Download CV</a>
           </div>
 
-          <div class="max-w-full self-end px-4 lg:w-1/2">
-            <div class="relative mt-10 lg:mt-0 lg:mr-0  blur-on-scroll">
-              <!-- Gambar dengan kelas yang akan diberi efek blur -->
-              <img
-                src="dist/img/RA400.png"
-                alt="Restu Ardiansyah"
-                class="max-w-md mx-auto relative z-10 "
-              />
-              <!-- SVG overlay -->
-              <span class=" absolute bottom-20 left-1/2 -translate-x-1/2 md:scale-125">
-                <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                  <path fill="#0ea5e9" d="M36.8,-62C46.4,-58.2,51.9,-45.7,54.7,-33.9C57.5,-22.1,57.4,-11.1,60.9,2C64.3,15,71.1,30,69.8,44.3C68.5,58.6,59,72.1,46,77.7C33,83.4,16.5,81.1,1.8,78C-12.9,74.9,-25.9,71,-36.5,64.1C-47.1,57.1,-55.5,47,-64.6,35.8C-73.8,24.6,-83.8,12.3,-81.2,1.5C-78.6,-9.3,-63.4,-18.6,-55.6,-32.1C-47.8,-45.6,-47.3,-63.4,-39.3,-68C-31.2,-72.7,-15.6,-64.2,-1,-62.4C13.6,-60.7,27.2,-65.7,36.8,-62Z" transform="translate(100 100)" />
-                </svg>
-              </span>
-            </div>
+        <div class="max-w-full self-end px-4 lg:w-1/2">
+          <div class="relative mt-10 lg:mt-0 lg:mr-0  blur-on-scroll">
+            <!-- Gambar dengan kelas yang akan diberi efek blur -->
+            <img id="myImage" src="dist/img/RA400.png" alt="Restu Ardiansyah" class="max-w-full mx-auto relative z-10" />
+            <!-- Indikator titik -->
+            <div id="dots" class="mt-2 text-center"></div>
+            <!-- SVG overlay -->
+            <!-- <span class=" absolute bottom-20 left-1/2 -translate-x-1/2 md:scale-125">
+              <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#0ea5e9" d="M36.8,-62C46.4,-58.2,51.9,-45.7,54.7,-33.9C57.5,-22.1,57.4,-11.1,60.9,2C64.3,15,71.1,30,69.8,44.3C68.5,58.6,59,72.1,46,77.7C33,83.4,16.5,81.1,1.8,78C-12.9,74.9,-25.9,71,-36.5,64.1C-47.1,57.1,-55.5,47,-64.6,35.8C-73.8,24.6,-83.8,12.3,-81.2,1.5C-78.6,-9.3,-63.4,-18.6,-55.6,-32.1C-47.8,-45.6,-47.3,-63.4,-39.3,-68C-31.2,-72.7,-15.6,-64.2,-1,-62.4C13.6,-60.7,27.2,-65.7,36.8,-62Z" transform="translate(100 100)" />
+              </svg>
+            </span> -->
           </div>
+        </div>
+
         </div>
       </div>
     </section>

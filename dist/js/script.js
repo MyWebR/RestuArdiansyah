@@ -17,6 +17,7 @@ window.onscroll = function() {
 };
 
 
+
 // hamburger
 const hamburger = document.querySelector('#hamburger');
 const navMenu = document.querySelector('#nav-menu');
@@ -34,6 +35,8 @@ window.addEventListener('click', function(e){
      }
 });
 
+
+
 // dark mode toggle
 const darkToggle = document.querySelector('#dark-toggle');
 const html = document.querySelector('html');
@@ -48,7 +51,6 @@ darkToggle.addEventListener('click', function(){
      }
 });
 
-
 // pindahkan posisi toggle sesuai toggle
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
      document.documentElement.classList.add('dark')
@@ -57,6 +59,9 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
      darkToggle.checked = false;
      
    };
+
+
+
 
 
 // animasi ketik
@@ -68,12 +73,13 @@ function typeWriter() {
  // Mulai mengetik menggunakan Typed.js
  typeWriter();
  const mengetik = new Typed(".typing", {
-     strings : ["Front End Defeloper", "Designer"],
-     typeSpeed : 100,
-     backSpeed : 50,
+     strings : ["Front End Developer", "Designer"],
+     typeSpeed : 120,
+     backSpeed : 60,
      loop : true,
  });
  
+
 
 
 // qr code
@@ -114,6 +120,9 @@ resetQRCodeButton.addEventListener('click', () => {
   resetQRCodeButton.style.display = 'none';
 });
 
+
+
+
 // form contact
 document.getElementById("contactForm").addEventListener("submit", function(event) {
      // Memastikan form tidak di-submit secara default
@@ -138,6 +147,7 @@ document.getElementById("contactForm").addEventListener("submit", function(event
    });
 
   
+
 
 //    blur img hero
 document.addEventListener('DOMContentLoaded', function() {
@@ -175,4 +185,49 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-   
+
+
+
+// ganti gambar hero section
+// script.js
+var imageUrls = [
+  'dist/img/RA400.png',
+  'dist/img/pp2.png',
+  'dist/img/pp3.png'
+];
+
+var currentImageIndex = 0;
+
+function changeImage() {
+  var image = document.getElementById('myImage');
+  image.style.opacity = '0';
+
+  setTimeout(function() {
+    image.src = imageUrls[currentImageIndex];
+    image.style.opacity = '1';
+    currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
+    updateDots(); // Memanggil fungsi untuk memperbarui indikator titik
+  },500);
+
+  setTimeout(changeImage, 10500);
+}
+
+function updateDots() {
+  var dotsContainer = document.getElementById('dots');
+  dotsContainer.innerHTML = ''; // Mengosongkan kontainer titik sebelum menambahkan titik baru
+  for (var i = 0; i < imageUrls.length; i++) {
+    var dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === currentImageIndex) {
+      dot.classList.add('active'); // Menandai titik yang sesuai dengan gambar saat ini
+      dot.style.backgroundColor = '#0ea5e9'; // Mengubah warna titik menjadi #0ea5e9
+    }
+    dotsContainer.appendChild(dot);
+  }
+}
+
+
+window.onload = function() {
+  changeImage();
+  updateDots();
+};
