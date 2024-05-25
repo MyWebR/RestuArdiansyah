@@ -121,34 +121,6 @@ resetQRCodeButton.addEventListener('click', () => {
 });
 
 
-
-
-// form contact
-document.getElementById("contactForm").addEventListener("submit", function(event) {
-     // Memastikan form tidak di-submit secara default
-     event.preventDefault();
-     
-     // Mengambil nilai dari input
-     var name = document.getElementById("name").value;
-     var email = document.getElementById("email").value;
-     var message = document.getElementById("message").value;
- 
-     // Validasi input
-     if (name === "" || email === "" || message === "") {
-       alert("Mohon lengkapi semua kolom.");
-       return; // Menghentikan fungsi agar form tidak terkirim
-     }
-     
-     // Jika semua input telah diisi, tampilkan notifikasi
-     alert("Terima kasih! Form berhasil dikirim.");
- 
-     // Mengosongkan input setelah form berhasil dikirim
-     document.getElementById("contactForm").reset();
-   });
-
-  
-
-
 //    blur img hero
 document.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('.blur-on-scroll');
@@ -185,8 +157,23 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-
-
+// email
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const serviceID = '2222PHI87YT'; // Ganti dengan Service ID Anda
+  const templateID = 'port8932yt76'; // Ganti dengan Template ID Anda
+  
+  emailjs.sendForm(serviceID, templateID, this)
+      .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Email successfully sent!');
+          window.location.href = 'index.html'; // Mengarahkan ke halaman index.html setelah email terkirim
+      }, function(error) {
+          console.log('FAILED...', error);
+          alert('Email sending failed.');
+      });
+});
 
 // ganti gambar hero section
 // script.js
