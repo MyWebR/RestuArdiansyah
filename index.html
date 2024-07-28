@@ -6,7 +6,6 @@
 
   <link rel="icon" href="dist/img/logo restu.jpeg" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
-
   <link href="dist/output.css" rel="stylesheet" />
   <script>
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -35,7 +34,8 @@
     <!-- end animasi buka web -->
 
      <!-- header start -->
-     <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
+      <!-- ganti fixed dengan absolute untuk tidak fixed -->
+     <header class="bg-transparent fixed top-0 left-0 w-full flex items-center z-10">
           <div class="container ">
                <div class="flex items-center justify-between relative">
                 <div class="px-4">

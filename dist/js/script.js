@@ -1,44 +1,40 @@
-// navbar fixed
-window.onscroll = function() {
-     const header = document.querySelector('header');
-     const fixedNav = header.offsetTop;
-     const toTop = document.querySelector('#to-top');
+// Navbar Fixed
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('header');
+  const toTop = document.querySelector('#to-top'); 
 
-     if(window.pageYOffset > fixedNav) {
-          header.classList.add('navbar-fixed');
-          toTop.classList.remove('hidden');
-          toTop.classList.add('flex');
+  // Menentukan posisi scroll dan posisi navbar
+  const fixedNav = header.offsetTop;
 
-     } else {
-          header.classList.remove('navbar-fixed');
-          toTop.classList.remove('flex');
-          toTop.classList.add('hidden');
-     }
-};
+  if (window.pageYOffset > fixedNav) {
+    header.classList.add('navbar-fixed');
+    toTop.classList.remove('hidden');
+    toTop.classList.add('flex');
+  } else {
+    header.classList.remove('navbar-fixed');
+    toTop.classList.remove('flex');
+    toTop.classList.add('hidden');
+  }
+});
 
-
-
-// hamburger
+// Hamburger Menu
 const hamburger = document.querySelector('#hamburger');
 const navMenu = document.querySelector('#nav-menu');
 
 hamburger.addEventListener('click', function() {
-     hamburger.classList.toggle('hamburger-active');
-     navMenu.classList.toggle('hidden');
+  hamburger.classList.toggle('hamburger-active');
+  navMenu.classList.toggle('hidden');
 });
 
-// klik diluar hamburger
-window.addEventListener('click', function(e){
-     if(e.target!= hamburger && e.target != navMenu) {
-          hamburger.classList.remove('hamburger-active');
-          navMenu.classList.add('hidden');
-     }
+// Klik di luar hamburger
+window.addEventListener('click', function(e) {
+  if (e.target !== hamburger && !navMenu.contains(e.target)) {
+    hamburger.classList.remove('hamburger-active');
+    navMenu.classList.add('hidden');
+  }
 });
 
-
-
-// dark mode toggle
-// dark mode toggle
+// Dark Mode Toggle
 const darkToggle = document.querySelector('#dark-toggle');
 const html = document.querySelector('html');
 
@@ -64,43 +60,28 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
 window.addEventListener('load', () => {
   const body = document.body;
 
-  // Add the animation class after the page loads
+  // Tambahkan kelas animasi setelah halaman dimuat
   setTimeout(() => {
     body.classList.add('hide-anim');
-  }, 100); // Slight delay to ensure elements are rendered
+  }, 100); // Penundaan sedikit untuk memastikan elemen dirender
 
-  // Remove the elements from the DOM after the animation ends
+  // Hapus elemen dari DOM setelah animasi selesai
   setTimeout(() => {
     document.querySelector('.atas').style.display = 'none';
     document.querySelector('.bawah').style.display = 'none';
     document.querySelector('.overlay').style.display = 'none';
-  }, 1100); // Duration should match the CSS transition duration plus the initial delay
+  }, 1100); // Durasi harus sesuai dengan durasi transisi CSS ditambah penundaan awal
 });
 
+// Typewriter Effect
+const mengetik = new Typed(".typing", {
+  strings: ["Front End Developer", "Designer"],
+  typeSpeed: 120,
+  backSpeed: 60,
+  loop: true,
+});
 
-
-
-
-
-// animasi ketik
-// Fungsi untuk mengetik teks seperti mesin ketik
-function typeWriter() {
-     // Anda dapat menambahkan implementasi di sini jika diperlukan
- }
- 
- // Mulai mengetik menggunakan Typed.js
- typeWriter();
- const mengetik = new Typed(".typing", {
-     strings : ["Front End Developer", "Designer"],
-     typeSpeed : 120,
-     backSpeed : 60,
-     loop : true,
- });
- 
-
-
-
-// qr code
+// QR Code (Jika diperlukan, aktifkan dengan menambahkan library QRCode)
 // const form = document.getElementById('qrCodeForm');
 // const namaInput = document.getElementById('nama');
 // const createQRCodeButton = document.getElementById('createQRCode');
@@ -111,19 +92,15 @@ function typeWriter() {
 //   event.preventDefault();
 //   const nama = namaInput.value;
 //   if (nama) {
-    // Hapus konten sebelum membuat QR code baru
-    // qrCodeContainer.innerHTML = '';
-
-    // const qrCode = new QRCode(qrCodeContainer, {
-    //   text: nama,
-    //   width: 200,
-    //   height: 200,
-    //   colorDark: '#000000',
-    //   colorLight: '#ffffff',
-    //   correctLevel: QRCode.CorrectLevel.H
-    // });
-
-    // Tampilkan tombol reset
+//     qrCodeContainer.innerHTML = '';
+//     const qrCode = new QRCode(qrCodeContainer, {
+//       text: nama,
+//       width: 200,
+//       height: 200,
+//       colorDark: '#000000',
+//       colorLight: '#ffffff',
+//       correctLevel: QRCode.CorrectLevel.H
+//     });
 //     resetQRCodeButton.style.display = 'block';
 //   } else {
 //     alert('Harap isi form dengan teks yang valid.');
@@ -131,23 +108,15 @@ function typeWriter() {
 // });
 
 // resetQRCodeButton.addEventListener('click', () => {
-  // Hapus QR code
-  // qrCodeContainer.innerHTML = '';
-
-  // Sembunyikan tombol reset
-//   // resetQRCodeButton.style.display = 'none';
+//   qrCodeContainer.innerHTML = '';
+//   resetQRCodeButton.style.display = 'none';
 // });
 
-
-
-
-
-
-//    blur img hero
+// Blur Effect on Scroll
 document.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('.blur-on-scroll');
 
-  // Membuat fungsi untuk mengecek apakah elemen dalam viewport atau tidak
+  // Fungsi untuk mengecek apakah elemen dalam viewport
   function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
@@ -162,24 +131,24 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('scroll', function() {
     images.forEach(function(image) {
       if (isInViewport(image)) {
-        image.classList.remove('blurred'); // Jika dalam viewport, hilangkan efek blur
+        image.classList.remove('blurred'); // Hilangkan efek blur
       } else {
-        image.classList.add('blurred'); // Jika tidak dalam viewport, tambahkan efek blur
+        image.classList.add('blurred'); // Tambahkan efek blur
       }
     });
   });
 
-  // Sekaligus jalankan untuk gambar yang sudah terlihat pada saat halaman dimuat
+  // Sekaligus jalankan untuk gambar yang sudah terlihat saat halaman dimuat
   images.forEach(function(image) {
     if (isInViewport(image)) {
-      image.classList.remove('blurred'); // Jika dalam viewport, hilangkan efek blur
+      image.classList.remove('blurred');
     } else {
-      image.classList.add('blurred'); // Jika tidak dalam viewport, tambahkan efek blur
+      image.classList.add('blurred');
     }
   });
 });
 
-// email
+// Email Form Submission
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -188,24 +157,23 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
   console.log('Sending email with the following data:');
   console.log({
-      name: this.name.value,
-      email: this.email.value,
-      message: this.message.value
+    name: this.name.value,
+    email: this.email.value,
+    message: this.message.value
   });
 
   emailjs.sendForm(serviceID, templateID, this)
-      .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
-          alert('Email successfully sent!');
-          window.location.href = 'index.html'; // Mengarahkan ke halaman index.html setelah email terkirim
-      }, function(error) {
-          console.log('FAILED...', error);
-          alert('Email sending failed.');
-      });
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+      alert('Email successfully sent!');
+      window.location.href = 'index.html'; // Mengarahkan ke halaman index.html setelah email terkirim
+    }, function(error) {
+      console.log('FAILED...', error);
+      alert('Email sending failed.');
+    });
 });
 
-// ganti gambar hero section
-// script.js
+// Image Slider
 var imageUrls = [
   'dist/img/RA400.png',
   'dist/img/pp2.png',
@@ -222,26 +190,25 @@ function changeImage() {
     image.src = imageUrls[currentImageIndex];
     image.style.opacity = '1';
     currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
-    updateDots(); // Memanggil fungsi untuk memperbarui indikator titik
-  },500);
+    updateDots(); // Memperbarui indikator titik
+  }, 500);
 
   setTimeout(changeImage, 10500);
 }
 
 function updateDots() {
   var dotsContainer = document.getElementById('dots');
-  dotsContainer.innerHTML = ''; // Mengosongkan kontainer titik sebelum menambahkan titik baru
+  dotsContainer.innerHTML = ''; // Mengosongkan kontainer titik
   for (var i = 0; i < imageUrls.length; i++) {
     var dot = document.createElement('span');
     dot.classList.add('dot');
     if (i === currentImageIndex) {
-      dot.classList.add('active'); // Menandai titik yang sesuai dengan gambar saat ini
-      dot.style.backgroundColor = '#0ea5e9'; // Mengubah warna titik menjadi #0ea5e9
+      dot.classList.add('active'); // Menandai titik yang aktif
+      dot.style.backgroundColor = '#0ea5e9';
     }
     dotsContainer.appendChild(dot);
   }
 }
-
 
 window.onload = function() {
   changeImage();
