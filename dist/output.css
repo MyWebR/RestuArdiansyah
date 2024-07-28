@@ -75,6 +75,53 @@ animation: blurIn 5s ease-in-out;
 }
 
 
+/* templeate new Project */
+.new {
+  position: absolute;
+  z-index: 1;
+  padding: 4px 25px 4px 10px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  margin-left: 0px;
+  border-radius: 5px 0 0 0;
+  transform-origin: top left;
+  animation: changeColor 5s infinite;
+}
+
+@keyframes changeColor {
+  0% {
+    background-color: #ef4444;
+  }
+  25% {
+    background-color: #a855f7;
+  }
+  50% {
+    background-color: #eab308;
+  }
+  75% {
+    background-color: #22c55e;
+  }
+  100% {
+    background-color: #0ea5e9;
+  }
+}
+
+.segitiga {
+  margin-top: -14px;
+  margin-left: 28px;
+  transform: rotate(-90deg);
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid white;
+  position: absolute;
+}
+
+.new p {
+  font-weight: bold;
+  color: white;
+  font-size: 10px;
+}
 
 
 
