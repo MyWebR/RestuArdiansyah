@@ -38,27 +38,45 @@ window.addEventListener('click', function(e){
 
 
 // dark mode toggle
+// dark mode toggle
 const darkToggle = document.querySelector('#dark-toggle');
 const html = document.querySelector('html');
 
-darkToggle.addEventListener('click', function(){
-     if (darkToggle.checked) {
-          html.classList.add('dark');
-          localStorage.theme = 'dark';
-     } else {
-          html.classList.remove('dark');
-          localStorage.theme = 'light';
-     }
+darkToggle.addEventListener('click', function() {
+  if (darkToggle.checked) {
+    html.classList.add('dark');
+    localStorage.theme = 'dark';
+  } else {
+    html.classList.remove('dark');
+    localStorage.theme = 'light';
+  }
 });
 
-// pindahkan posisi toggle sesuai toggle
+// Pindahkan posisi toggle sesuai mode saat ini
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-     document.documentElement.classList.add('dark')
-     darkToggle.checked = true;
-   } else {
-     darkToggle.checked = false;
-     
-   };
+  document.documentElement.classList.add('dark');
+  darkToggle.checked = true;
+} else {
+  darkToggle.checked = false;
+}
+
+// Animasi
+window.addEventListener('load', () => {
+  const body = document.body;
+
+  // Add the animation class after the page loads
+  setTimeout(() => {
+    body.classList.add('hide-anim');
+  }, 100); // Slight delay to ensure elements are rendered
+
+  // Remove the elements from the DOM after the animation ends
+  setTimeout(() => {
+    document.querySelector('.atas').style.display = 'none';
+    document.querySelector('.bawah').style.display = 'none';
+    document.querySelector('.overlay').style.display = 'none';
+  }, 1100); // Duration should match the CSS transition duration plus the initial delay
+});
+
 
 
 
@@ -119,6 +137,10 @@ function typeWriter() {
   // Sembunyikan tombol reset
 //   // resetQRCodeButton.style.display = 'none';
 // });
+
+
+
+
 
 
 //    blur img hero

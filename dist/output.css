@@ -1,3 +1,88 @@
+/* animasi buka web */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 10000; /* Ensure overlay is on top */
+  pointer-events: none; /* Prevent interactions with overlay itself */
+}
+
+.atas, .bawah {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  transition: transform 1s;
+}
+
+.atas {
+  top: 0;
+  background-color: #0ea5e9;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  transform: translateY(0);
+}
+
+.bawah {
+  bottom: 0;
+  background-color: #0ea5e9;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  transform: translateY(0);
+}
+
+.hide-anim .atas {
+  transform: translateY(-100%);
+}
+
+.hide-anim .bawah {
+  transform: translateY(100%);
+}
+
+/* Dark mode styles */
+.dark .atas, .dark .bawah {
+  background-color: #020617; /* Background color for dark mode */
+}
+
+/* Desktop-specific styles */
+@media (min-width: 768px) {
+  .atas {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    transform: translateX(0);
+  }
+
+  .bawah {
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 0;
+    transform: translateX(0);
+  }
+
+  .hide-anim .atas {
+    transform: translateX(-100%);
+  }
+
+  .hide-anim .bawah {
+    transform: translateX(100%);
+  }
+}
+
+/* blur img  */
 @keyframes blurFadeOut {
   0% {
       filter: blur(8px);
@@ -9,7 +94,6 @@
   }
 }
 
-/* blur img  */
 .blur-on-load {
   animation: blurFadeOut 2s ease forwards;
 }
