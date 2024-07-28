@@ -83,42 +83,42 @@ function typeWriter() {
 
 
 // qr code
-const form = document.getElementById('qrCodeForm');
-const namaInput = document.getElementById('nama');
-const createQRCodeButton = document.getElementById('createQRCode');
-const qrCodeContainer = document.getElementById('qrCodeContainer');
-const resetQRCodeButton = document.getElementById('resetQRCode');
+// const form = document.getElementById('qrCodeForm');
+// const namaInput = document.getElementById('nama');
+// const createQRCodeButton = document.getElementById('createQRCode');
+// const qrCodeContainer = document.getElementById('qrCodeContainer');
+// const resetQRCodeButton = document.getElementById('resetQRCode');
 
-createQRCodeButton.addEventListener('click', (event) => {
-  event.preventDefault();
-  const nama = namaInput.value;
-  if (nama) {
+// createQRCodeButton.addEventListener('click', (event) => {
+//   event.preventDefault();
+//   const nama = namaInput.value;
+//   if (nama) {
     // Hapus konten sebelum membuat QR code baru
-    qrCodeContainer.innerHTML = '';
+    // qrCodeContainer.innerHTML = '';
 
-    const qrCode = new QRCode(qrCodeContainer, {
-      text: nama,
-      width: 200,
-      height: 200,
-      colorDark: '#000000',
-      colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.H
-    });
+    // const qrCode = new QRCode(qrCodeContainer, {
+    //   text: nama,
+    //   width: 200,
+    //   height: 200,
+    //   colorDark: '#000000',
+    //   colorLight: '#ffffff',
+    //   correctLevel: QRCode.CorrectLevel.H
+    // });
 
     // Tampilkan tombol reset
-    resetQRCodeButton.style.display = 'block';
-  } else {
-    alert('Harap isi form dengan teks yang valid.');
-  }
-});
+//     resetQRCodeButton.style.display = 'block';
+//   } else {
+//     alert('Harap isi form dengan teks yang valid.');
+//   }
+// });
 
-resetQRCodeButton.addEventListener('click', () => {
+// resetQRCodeButton.addEventListener('click', () => {
   // Hapus QR code
-  qrCodeContainer.innerHTML = '';
+  // qrCodeContainer.innerHTML = '';
 
   // Sembunyikan tombol reset
-  resetQRCodeButton.style.display = 'none';
-});
+//   // resetQRCodeButton.style.display = 'none';
+// });
 
 
 //    blur img hero
@@ -160,10 +160,17 @@ document.addEventListener('DOMContentLoaded', function() {
 // email
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  
+
   const serviceID = '2222PHI87YT'; // Ganti dengan Service ID Anda
   const templateID = 'port8932yt76'; // Ganti dengan Template ID Anda
-  
+
+  console.log('Sending email with the following data:');
+  console.log({
+      name: this.name.value,
+      email: this.email.value,
+      message: this.message.value
+  });
+
   emailjs.sendForm(serviceID, templateID, this)
       .then(function(response) {
           console.log('SUCCESS!', response.status, response.text);
