@@ -195,9 +195,9 @@ animation: blurIn 5s ease-in-out;
   margin-top: -14px;
   margin-left: 28px;
   transform: rotate(-90deg);
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 12px solid white;
+  border-left: 11.5px solid transparent;
+  border-right: 11.5px solid transparent;
+  border-bottom: 11.5px solid white;
   position: absolute;
 }
 
