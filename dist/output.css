@@ -183,11 +183,11 @@ animation: blurIn 5s ease-in-out;
 
 .segitiga {
   margin-top: -14px;
-  margin-left: 28px;
+  margin-left: 29px;
   transform: rotate(-90deg);
-  border-left: 11.5px solid transparent;
-  border-right: 11.5px solid transparent;
-  border-bottom: 11.5px solid white;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid white;
   position: absolute;
 }
 
@@ -197,7 +197,12 @@ animation: blurIn 5s ease-in-out;
   font-size: 10px;
 }
 
-
+@media (min-width: 1024px) {
+  .custom-margin {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 
 /*
