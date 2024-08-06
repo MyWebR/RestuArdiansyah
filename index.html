@@ -6,6 +6,7 @@
 
   <link rel="icon" href="dist/img/logo restu.jpeg" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
   <link href="dist/output.css" rel="stylesheet" />
   <script>
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -262,68 +263,78 @@
     <section id="portfolio" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800">
       <div class="container ">
         <div class="w-full px-4">
-          <div class="max-w-xl mx-auto text-center mb-16">
+          <div class="max-w-xl mx-auto text-center mb-10">
             <h4 class="font-semibold text-lg text-primary mb-2">Portfolio</h4>
             <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">Project Terbaru</h2>
             <p class="font-medium text-md text-secondary md:text-lg">Berikut adalah beberapa project yang sudah saya buat baru-baru ini</p>
           </div>
         </div>
 
+        <!-- start submenu -->
+        <div class="sub-menu">
+          <button id="show-project"><p>Project</p></button>
+          <button id="show-sertifikat"><p>Sertifikat</p></button>
+        </div>
+        <!-- end submenu -->
 
-        
-        
-
-        <!-- project 1 -->
-        <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto">
+        <!-- start content project -->
+        <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto content" id="project">
+          <!-- project 1 -->
           <div class="mb-12 p-4 md:w-1/2">
-            <div class=" rounded-md shadow-md overflow-hidden">
+            <div class="rounded-md shadow-md overflow-hidden">
               <a href="https://mywebr.github.io/Store-Notes/">
-              <img src="dist/img/project-terbaru/PULSA.png" alt="credit" class="w-full  blur-on-scroll">
+                <img src="dist/img/project-terbaru/PULSA.png" alt="credit" class="w-full blur-on-scroll">
               </a>
             </div>
             <h3 class="font-semibold text-xl text-dark mt-5 ,b-3 dark:text-white">List Pelanggan Pulsa</h3>
             <p class="font-medium text-base text-secondary">Project ini di buat untuk memudahkan penjual untuk menyimpan data dan informasi pelanggan. <a href="https://mywebr.github.io/Store-Notes/" target="_blank" class="text-primary">Lihat</a></p>
           </div>
-
-
           <!-- project 2 -->
           <div class="mb-12 p-4 md:w-1/2">
             <div class="profile-portfolio rounded-md shadow-md overflow-hidden">
-              <a href="https://mywebr.github.io/Musikku/           ">
-              <img src="dist/img/project-terbaru/S-CLONE.png" alt="coffe" class="w-full  blur-on-scroll">
-            </a>
+              <a href="https://mywebr.github.io/Musikku/">
+                <img src="dist/img/project-terbaru/S-CLONE.png" alt="coffe" class="w-full blur-on-scroll">
+              </a>
             </div>
             <h3 class="font-semibold text-xl text-dark mt-5 ,b-3 dark:text-white">Musikku</h3>
-            <p class="font-medium text-base text-secondary">Website ini berisi lagu-lagu favorit saya, Tujuan saya membuaat <strong style="color: #22c55e;">Musikku</strong> ini untuk melatih keahlian layouting dalam membuat website <a href="https://mywebr.github.io/Musikku/" target="_blank" class="text-primary">Lihat</a></p>
+            <p class="font-medium text-base text-secondary">Website ini berisi lagu-lagu favorit saya, Tujuan saya membuat <strong style="color: #22c55e;">Musikku</strong> ini untuk melatih keahlian layouting dalam membuat website <a href="https://mywebr.github.io/Musikku/" target="_blank" class="text-primary">Lihat</a></p>
           </div>
-
-
-          <!-- project 3 -->
-           
+          <!-- project 3 -->           
           <div class="mb-12 p-4 md:w-1/2">
             <div class="profile-portfolio rounded-md shadow-md overflow-hidden">
-              <div class="new">
-                <p>New</p>
-                <div class="segitiga"></div>
-              </div>
-              <img src="dist/img/project-terbaru/PROGRAM-KASIR.png" alt="Game" class="w-full  blur-on-scroll">
+              <img src="dist/img/project-terbaru/PROGRAM-KASIR.png" alt="Game" class="w-full blur-on-scroll">
             </div>
             <h3 class="font-semibold text-xl text-dark mt-5 ,b-3 dark:text-white">Program Kasir</h3>
             <p class="font-medium text-base text-secondary">Kenali efisiensi baru dalam manajemen penjualan dengan <strong style="color: #0ea5e9;">Program Kasir</strong> inovatif kami, hasil kolaborasi tim yang solid dan berpengalaman!</p>
           </div>
-          <!-- 
+        </div>
+        <!-- end content project -->
+
+        <!-- start content sertifikat -->
+        <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto content" id="sertifikat">
+          <!-- sertifikat 1 -->
           <div class="mb-12 p-4 md:w-1/2">
-            <div class="profile-portfolio rounded-md shadow-md overflow-hidden">
-              <img src="https://source.unsplash.com/600x300?portfolio" alt="portfolio" class="w-full  blur-on-scroll">
+            <div class="rounded-md shadow-md overflow-hidden">
+              <a href="dist/img/sertif/SEMINAR.pdf">
+                <canvas id="pdfViewer1" class="pdf-canvas"></canvas>
+              </a>
             </div>
-            <h3 class="font-semibold text-xl text-dark mt-5 ,b-3 dark:text-white">Portfolio</h3>
-            <p class="font-medium text-base text-secondary">portofolio merupakan kumpulan dari hasil kerja. Dimana salah satu manfaat yang mungkin akan paling dirasakan ketika mempunyai portofolio sendiri adalah meningkatnya level kredibilitas.
-            </p>
+            <h3 class="font-semibold text-xl text-dark mt-5 ,b-3 dark:text-white">Seminar Nasional</h3>
+            <p class="font-medium text-base text-secondary">8 Juni 2024 <a href="dist/img/sertif/SEMINAR.pdf" target="_blank" class="text-primary"> Lihat </a></p>
+          </div>
+
+          <!-- sertifikat 1 -->
+          <div class="mb-12 p-4 md:w-1/2">
+            <div class="rounded-md shadow-md overflow-hidden">
+              <a href="dist/img/sertif/sertifikat_dinus_inside.pdf">
+                <canvas id="pdfViewer2" class="pdf-canvas"></canvas>
+              </a>
+            </div>
+            <h3 class="font-semibold text-xl text-dark mt-5 ,b-3 dark:text-white">Dinus Inside</h3>
+            <p class="font-medium text-base text-secondary">4 - 6 September 2023 <a href="dist/img/sertif/sertifikat_dinus_inside.pdf" target="_blank" class="text-primary">Lihat</a></p>
           </div>
         </div>
-          -->
-
-      </div>
+        <!-- end content sertifikat -->
     </section>
     <!-- end portfolio section -->
 

@@ -214,3 +214,81 @@ window.onload = function() {
   changeImage();
   updateDots();
 };
+
+
+// submenu// Mendapatkan elemen tombol dan div
+    const btnProject = document.getElementById('show-project');
+    const btnSertifikat = document.getElementById('show-sertifikat');
+    const divProject = document.getElementById('project');
+    const divSertifikat = document.getElementById('sertifikat');
+
+    // Fungsi untuk menampilkan project dan menyembunyikan sertifikat
+    function showProject() {
+        divProject.classList.remove('hidden');
+        divSertifikat.classList.add('hidden');
+        btnProject.querySelector('p').style.color = '#0ea5e9';
+        btnProject.querySelector('p').style.borderBottom = '3px solid #0ea5e9';
+        btnProject.querySelector('p').style.width = '150%';
+        btnSertifikat.querySelector('p').style.color = 'gray';
+        btnSertifikat.querySelector('p').style.borderBottom = 'none';
+    }
+
+    // Fungsi untuk menampilkan sertifikat dan menyembunyikan project
+    function showSertifikat() {
+        divProject.classList.add('hidden');
+        divSertifikat.classList.remove('hidden');
+        btnProject.querySelector('p').style.color = 'gray';
+        btnProject.querySelector('p').style.borderBottom = 'none';
+        btnSertifikat.querySelector('p').style.color = '#0ea5e9';
+        btnSertifikat.querySelector('p').style.borderBottom = '3px solid #0ea5e9';
+    }
+
+    // Menambahkan event listener pada tombol
+    btnProject.addEventListener('click', showProject);
+    btnSertifikat.addEventListener('click', showSertifikat);
+
+    // Menjalankan fungsi showProject() ketika halaman pertama kali dibuka
+    showProject();
+
+    // pdf
+   // URL PDF
+   const pdfUrl1 = 'dist/img/sertif/SEMINAR.pdf';  // Ganti dengan URL atau path PDF pertama Anda
+   const pdfUrl2 = 'dist/img/sertif/sertifikat_dinus_inside.pdf';  // Ganti dengan URL atau path PDF kedua Anda
+
+   // Fungsi untuk merender halaman PDF ke dalam canvas
+   function renderPDF(url, canvasId) {
+       const canvas = document.getElementById(canvasId);
+       const context = canvas.getContext('2d');
+
+       // Memuat PDF
+       pdfjsLib.getDocument(url).promise.then(pdf => {
+           console.log(`PDF loaded for ${canvasId}`);
+
+           // Mendapatkan halaman pertama
+           pdf.getPage(1).then(page => {
+               console.log(`Page loaded for ${canvasId}`);
+
+               const scale = 1.5; // Atur skala sesuai kebutuhan
+               const viewport = page.getViewport({ scale: scale });
+
+               canvas.height = viewport.height;
+               canvas.width = viewport.width;
+
+               // Merender halaman ke dalam canvas
+               const renderContext = {
+                   canvasContext: context,
+                   viewport: viewport
+               };
+               const renderTask = page.render(renderContext);
+               renderTask.promise.then(() => {
+                   console.log(`Page rendered for ${canvasId}`);
+               });
+           });
+       }).catch(error => {
+           console.error(`Error loading PDF for ${canvasId}: ${error.message}`);
+       });
+   }
+
+   // Merender PDF
+   renderPDF(pdfUrl1, 'pdfViewer1');
+   renderPDF(pdfUrl2, 'pdfViewer2');

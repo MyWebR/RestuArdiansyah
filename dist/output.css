@@ -149,6 +149,60 @@ animation: blurIn 5s ease-in-out;
 }
 
 
+/* start-submenu-project */
+.sub-menu {
+  height: 100%;
+  width: auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 10px 0 10px;
+  border-radius: 25px;
+  background-color: #00000010;
+  backdrop-filter: blur(10px); /* Menambahkan efek blur pada latar belakang */
+            -webkit-backdrop-filter: blur(10px); 
+  margin: 0 135px 30px 135px;
+}
+
+.dark .sub-menu {
+  background-color: rgba(255, 255, 255, 0.104);
+}
+
+#show-project,
+#show-sertifikat {
+  height: 100%;
+  width: auto;
+  padding: 0 10px;
+}
+
+#show-project p,
+#show-sertifikat p {
+  padding: 0 10px 5px 10px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.pdf-canvas {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.pdf-canvas:hover {
+  transform: scale(1.05); /* Membesarkan canvas sedikit */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Menambahkan shadow untuk efek kedalaman */
+}
+
+
+#pdfViewer1,
+#pdfViewer2 {
+  width: 100%;
+  height: 100%;
+}
+/* end-submenu-project */
+
+
 /* templeate new Project */
 .new {
   position: absolute;
@@ -201,6 +255,18 @@ animation: blurIn 5s ease-in-out;
   .custom-margin {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .sub-menu {
+    margin: 0 120px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sub-menu {
+    margin: 0 25px;
+    margin-bottom: 20px;
   }
 }
 
