@@ -8,6 +8,10 @@
   left: 0;
 }
 
+.dark #bg-collor {
+  display: none;
+}
+
 .atas {
   top: 0;
   background-color: #0ea5e9;
